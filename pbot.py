@@ -47,7 +47,7 @@ async def animal(context):
     animal_pings = animal_pings + 1
     line = rng(592)
     file = open("Animals.txt", "r")
-    await client.say(context.message.author.mention + " " + file.readlines()[line] + "<@442014182767067150>")
+    await client.say(context.message.author.mention + " " + file.readlines()[line])
     file.close()
 
 
