@@ -24,16 +24,6 @@ async def on_ready():
     print("Bot is ready.")
 
 
-async def count_backup():
-    await client.wait_until_ready()
-    while not client.is_closed:
-        file = open("Count.txt", "w")
-        file.write("Animals pinged: " + str(animal_pings) + "\n")
-        file.close()
-        print(animal_pings)
-        await asyncio.sleep(600)
-
-
 @client.command(name='8ball',
                 description="Answers a yes/no question.",
                 brief="Answers from the beyond.",
@@ -55,14 +45,10 @@ async def eight_ball(context):
 async def animal(context):
     global animal_pings
     animal_pings = animal_pings + 1
-    line = rng(593)
+    line = rng(592)
     file = open("Animals.txt", "r")
     await client.say(context.message.author.mention + " " + file.readlines()[line] + "<@442014182767067150>")
-    if line == 593:
-        print(context.message.author.mention)
-        await client.say("<@442014182767067150>")
     file.close()
 
 
-client.loop.create_task(count_backup())
 client.run(TOKEN)
