@@ -3,10 +3,11 @@ from discord.ext.commands import Bot
 from discord import Game
 from random import randint
 from discord import Member
+import os
 import asyncio
 
 
-TOKEN = ""
+TOKEN = os.environ['token']
 BOT_PREFIX = "^^"
 client = Bot(command_prefix = BOT_PREFIX)
 animal_pings = 0
