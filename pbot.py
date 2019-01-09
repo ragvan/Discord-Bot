@@ -4,7 +4,6 @@ from discord import Game
 from random import randint
 from discord import Member
 import os
-import asyncio
 
 
 TOKEN = os.environ['token']
@@ -21,7 +20,15 @@ def rng(x):
 @client.event
 async def on_ready():
     await client.change_presence(game=Game(name="with himself OwO"))
-    print("Bot is ready.")
+
+
+@client.command(name='rng',
+                description="Get a random number.",
+                brief="Random Number Generator?",
+                aliases=['random'],
+                pass_context=False)
+async def random_number(ctx: int):
+        await client.say(rng(ctx))
 
 
 @client.command(name='8ball',
@@ -43,11 +50,11 @@ async def eight_ball(context):
                 aliases=['a'],
                 pass_context=True)
 async def animal(context):
-    global animal_pings
-    animal_pings = animal_pings + 1
-    line = rng(592)
+    line = rng(593)
     file = open("Animals.txt", "r")
     await client.say(context.message.author.mention + " " + file.readlines()[line])
+    if line == 593:
+        await client.say("<@442014182767067150>")
     file.close()
 
 
