@@ -50,11 +50,31 @@ async def eight_ball(context):
                 aliases=['a'],
                 pass_context=True)
 async def animal(context):
-    line = rng(593)
+    line = rng(594)
     file = open("Animals.txt", "r")
     await client.say(context.message.author.mention + " " + file.readlines()[line])
-    if line == 593:
-        await client.say("<@442014182767067150>")
+    file.close()
+
+
+@client.command(name='bestiary',
+                description="Gives a random entry from the bestiary.",
+                brief="Random creature?",
+                aliases=['b'])
+async def bestiary():
+    line = rng(131)
+    file = open("Bestiary.txt", "r")
+    await client.say(file.readlines()[line])
+    file.close()
+
+
+@client.command(name='pickup',
+                description="Best way to tell someone you like them!.",
+                brief="Cheesy pick up lines.",
+                aliases=['p'])
+async def pickup(member: Member):
+    line = rng(120)
+    file = open("Pickup.txt", "r")
+    await client.say(member.mention + " " + file.readlines()[line])
     file.close()
 
 
