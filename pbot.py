@@ -77,15 +77,15 @@ async def pickup(member: Member):
     await client.say(member.mention + " " + file.readlines()[line])
     file.close()
 
-    @client.command(name='dead',
-                    description="Depressed? Use this to get more depressed!",
-                    brief="Use at your own risk",
-                    aliases=['rip', 'die', 'kys', 'kms'])
-    async def dead():
-        line = rng(41)
-        file = open("Demotivational.txt", "r")
-        await client.say(file.readlines()[line])
-        file.close()
+@client.command(name='dead',
+                description="Depressed? Use this to get more depressed!",
+                brief="Use at your own risk",
+                aliases=['rip', 'die', 'kys', 'kms'])
+async def dead():
+    line = rng(41)
+    file = open("Demotivational.txt", "r")
+    await client.say(file.readlines()[line])
+    file.close()
 
 
 client.run(TOKEN)
