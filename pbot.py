@@ -100,4 +100,14 @@ async def fact():
     file.close()
 
 
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if message.channel.is_private:
+        msg = message.author.mention + " - " + message.content
+        me = await client.get_user_info('442014182767067150')
+        await client.send_message(me, msg)
+
+
 client.run(TOKEN)
