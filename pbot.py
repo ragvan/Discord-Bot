@@ -108,6 +108,7 @@ async def on_message(message):
         msg = message.author.mention + " - " + message.content
         me = await client.get_user_info('442014182767067150')
         await client.send_message(me, msg)
+    await client.process_commands(message)
 
 
 client.run(TOKEN)
