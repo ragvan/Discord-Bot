@@ -98,6 +98,17 @@ async def fact():
     file = open("Facts.txt", "r")
     await client.say(file.readlines()[line])
     file.close()
+    
+   
+@client.command(name='motivate',
+                description="Motivational quotes.",
+                brief="quotes",
+                aliases=['m', 'sanni'])
+async def motivate():
+    line = rng(194)
+    file = open("Motivate.txt", "r")
+    await client.say(file.readlines()[line])
+    file.close()
 
 
 @client.event
